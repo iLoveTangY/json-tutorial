@@ -93,7 +93,10 @@ int lept_parse(lept_value* v, const char* json)
     {
         lept_parse_whitespace(&c);
         if (*c.json != '\0')    /* 如果值之后，空白之后还有其它字符 */
+        {
+            v->type = LEPT_NULL;
             return LEPT_PARSE_ROOT_NOT_SIGULAR;
+        }
     }
     return ret;
 }
