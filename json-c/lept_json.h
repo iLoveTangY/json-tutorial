@@ -19,6 +19,7 @@ typedef enum
 /* 自定义类型，存储解析结果 */
 typedef struct
 {
+    double n;
     lept_type type;
 } lept_value;
 
@@ -28,7 +29,8 @@ enum
     LEPT_PARSE_OK = 0,          /* 成功解析 */
     LEPT_PARSE_EXPECT_VALUE,    /* 需要一个value但是没有（只有空白） */
     LEPT_PARSE_INVALID_VALUE,   /* 无效的value */
-    LEPT_PARSE_ROOT_NOT_SIGULAR /* 一个值之后还有其他无效字符 */
+    LEPT_PARSE_ROOT_NOT_SINGULAR, /* 一个值之后还有其他无效字符 */
+    LEPT_PARSE_NUMBER_TOO_BIG
 };
 
 /* @desc:       解析指定的json字符串
@@ -43,5 +45,10 @@ int lept_parse(lept_value* v, const char* json);
  * @return:  枚举值，得到的type
  * */
 lept_type lept_get_type(const lept_value* v);
+
+/* @desc:   获取数字类型的值
+ * @return: 数字值
+ * */
+double lept_get_number(const lept_value* v);
 
 #endif /* LEPTJSON_TEST_LEPT_JSON_H */
