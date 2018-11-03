@@ -68,7 +68,8 @@ enum
     LEPT_PARSE_MISS_COMMA_OR_SQUARE_BRACKET,
     LEPT_PARSE_MISS_KEY,
     LEPT_PARSE_MISS_COLON,
-    LEPT_PARSE_MISS_COMMA_OR_CURLY_BRACKET
+    LEPT_PARSE_MISS_COMMA_OR_CURLY_BRACKET,
+    LEPT_STRINGIFY_OK
 };
 
 /* @desc:       解析指定的json字符串
@@ -77,6 +78,14 @@ enum
  * @return:     自定义枚举类型，表示解析函数执行完之后的状态
  * */
 int lept_parse(lept_value* v, const char* json);
+
+/*
+ * @desc:   将一个lept_value解析成字符串
+ * @param v:
+ * @param json: 解析出来的json字符串
+ * @param length: 字符串的长度
+ * */
+int lept_stringify(const lept_value* v, char** json, size_t* length);
 
 /* @desc:    获取制定解析结果的类型
  * @param v: 要获取类型的lept_value
